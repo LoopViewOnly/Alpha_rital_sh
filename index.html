@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>عالم الخيول العربية الأصيلة</title>
+  <!-- Cairo Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+          },
+          colors: {
+            gold: {
+              400: '#FACC15',
+              500: '#EAB308',
+              600: '#CA8A04',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-black text-gray-100 font-cairo antialiased selection:bg-gold-500 selection:text-black">
+
+  <!-- Background Glow Effects -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div class="absolute -top-40 -left-40 w-96 h-96 bg-gold-600/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/2 -right-40 w-96 h-96 bg-amber-900/20 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Hero Container -->
+  <main class="relative z-10 min-h-screen flex items-center justify-center px-6 py-12">
+    <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-zinc-900/60 backdrop-blur-xl border border-zinc-800 p-8 sm:p-12 rounded-3xl shadow-2xl shadow-black">
+      
+      <!-- Text Content -->
+      <div class="space-y-6 text-right">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-400 text-xs font-semibold tracking-wide">
+          <span>👑</span>
+          <span>الأصالة والجمال</span>
+        </div>
+        
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
+          عالم الخيول <br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-l from-gold-400 via-amber-200 to-amber-500">
+            العربية الأصيلة
+          </span>
+        </h1>
+
+        <p class="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-xl">
+          اكتشف روعة، تاريخ، وجمال أسرع وأنبيل الحيوانات في التاريخ. دليل شامل ومصمم بأسلوب عصري لكل ما تبحث عنه حول عالم الخيول.
+        </p>
+
+        <!-- CTA Action Buttons -->
+        <div class="flex flex-wrap items-center gap-4 pt-4">
+          <a href="more.html" 
+             class="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold text-black bg-gradient-to-r from-gold-400 to-amber-500 rounded-xl hover:brightness-110 transition-all duration-300 shadow-lg shadow-gold-500/20 transform hover:-translate-y-0.5">
+            اكتشف المزيد
+          </a>
+
+          <a href="shaqab.html" 
+             class="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold text-zinc-300 bg-zinc-800/80 border border-zinc-700/80 rounded-xl hover:bg-zinc-800 hover:text-white hover:border-zinc-600 transition-all duration-300">
+            زيارة الشقب (Shaqab)
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Image Container -->
+      <div class="relative group">
+        <!-- Glow frame -->
+        <div class="absolute -inset-1 bg-gradient-to-r from-gold-500/30 to-amber-700/30 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition duration-500"></div>
+        
+        <div class="relative overflow-hidden rounded-2xl border border-zinc-700/50 bg-zinc-950 aspect-[4/3]">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShkyecvZtQTxr7CmI5IT5TEuWEhtU-z-IPI6fW303npo6YbSrDf6xmqE_A-348_zaWE1B6vH6mKGRoLBcmca9slv2kpVvLvnyn_gOpgA&s=10"
+            alt="حصان عربي أصيل"
+            class="w-full h-full object-cover object-center transform group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

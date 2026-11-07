@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marwan Al Shaqab - The Living Legend</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#FFF9E5',
+                            300: '#FCE292',
+                            400: '#F9D153',
+                            500: '#D4AF37',
+                            600: '#AA820A',
+                            700: '#805F03',
+                            900: '#432E00',
+                        },
+                        emerald: {
+                            900: '#062016',
+                            950: '#02100B',
+                        },
+                        regal: {
+                            navy: '#0B132B',
+                            dark: '#070B19',
+                            card: '#111A35',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cinzel', 'Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                        arabic: ['Amiri', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Gold Metallic Gradient Text & Borders */
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #FFF099 0%, #D4AF37 50%, #805F03 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-gold-gradient {
+            background: linear-gradient(135deg, #FCE292 0%, #D4AF37 50%, #A07807 100%);
+        }
+        .border-gold-gradient {
+            border-image: linear-gradient(135deg, #D4AF37, #805F03) 1;
+        }
+        .gold-glow {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+        }
+        .gold-glow-lg {
+            box-shadow: 0 0 45px rgba(212, 175, 55, 0.35);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #070B19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #AA820A;
+        }
+
+        /* Subtle Luxury Pattern Background */
+        .bg-arabic-pattern {
+            background-color: #070B19;
+            background-image: radial-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+    </style>
+</head>
+<body class="bg-arabic-pattern text-gray-200 font-sans antialiased min-h-screen selection:bg-gold-500 selection:text-black">
+
+    <!-- Top Announcement / Royalty Banner -->
+    <div class="bg-gradient-to-r from-gold-900 via-gold-600 to-gold-900 text-gold-100 text-xs md:text-sm py-2 px-4 text-center font-medium tracking-widest uppercase border-b border-gold-500/30">
+        <span class="inline-block animate-pulse mr-2"><i class="fa-solid fa-crown"></i></span>
+        Official Archive & Historical Tribute • Al Shaqab National Treasure
+        <span class="inline-block animate-pulse ml-2"><i class="fa-solid fa-crown"></i></span>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-40 bg-regal-dark/90 backdrop-blur-md border-b border-gold-500/20 px-4 md:px-8 py-3 transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full border border-gold-500 flex items-center justify-center bg-gold-500/10 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-horse-head text-gold-400 text-lg"></i>
+                </div>
+                <div>
+                    <span class="font-serif text-lg font-bold text-gold-gradient block tracking-wider leading-tight">MARWAN AL SHAQAB</span>
+                    <span class="font-arabic text-xs text-gold-400/80 block leading-none">مروان الشقب</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Menu -->
+            <div class="hidden lg:flex items-center gap-8 text-sm font-medium uppercase tracking-wider text-gray-300">
+                <a href="#pedigree" class="hover:text-gold-400 transition-colors">Pedigree</a>
+                <a href="#trophies" class="hover:text-gold-400 transition-colors">Achievements</a>
+                <a href="#dynasty" class="hover:text-gold-400 transition-colors">Sire Dynasty</a>
+                <a href="#gallery" class="hover:text-gold-400 transition-colors">Gallery Vault</a>
+                <a href="#comparison" class="hover:text-gold-400 transition-colors">Lineage Tool</a>
+            </div>
+
+            <!-- Header Action Controls -->
+            <div class="flex items-center gap-3">
+                <button id="langToggle" class="px-3 py-1.5 rounded-md border border-gold-500/40 text-gold-400 text-xs font-serif hover:bg-gold-500/20 transition flex items-center gap-1.5" title="Toggle Language Snippets">
+                    <i class="fa-solid fa-globe"></i>
+                    <span id="langLabel">EN / عربي</span>
+                </button>
+
+                <button onclick="window.print()" class="hidden sm:flex px-3 py-1.5 rounded-md bg-gold-500/10 hover:bg-gold-500/20 text-gold-300 text-xs border border-gold-500/30 transition items-center gap-1.5">
+                    <i class="fa-solid fa-print"></i>
+                    <span>Export View</span>
+                </button>
+
+                <!-- Mobile Menu Toggle -->
+                <button id="mobileMenuBtn" class="lg:hidden p-2 text-gold-400 hover:text-white focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden mt-3 pt-3 border-t border-gold-500/20 space-y-3 pb-2 text-sm font-medium uppercase tracking-wider">
+            <a href="#pedigree" class="block py-1 px-2 hover:bg-gold-500/10 text-gold-300 rounded">Pedigree & Bloodlines</a>
+            <a href="#trophies" class="block py-1 px-2 hover:bg-gold-500/10 text-gold-300 rounded">Show Records</a>
+            <a href="#dynasty" class="block py-1 px-2 hover:bg-gold-500/10 text-gold-300 rounded">Sire Legacy</a>
+            <a href="#gallery" class="block py-1 px-2 hover:bg-gold-500/10 text-gold-300 rounded">Gallery Vault</a>
+            <a href="#comparison" class="block py-1 px-2 hover:bg-gold-500/10 text-gold-300 rounded">Progeny Comparison</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative min-h-[90vh] flex items-center justify-center overflow-hidden border-b border-gold-500/30 py-16 px-4">
+        <!-- Hero Background Canvas Effect / Image overlay -->
+        <div class="absolute inset-0 bg-cover bg-center opacity-25 scale-105 transition-transform duration-10000" style="background-image: url('https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=2000&q=80');"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-regal-dark via-regal-dark/80 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-regal-dark via-transparent to-regal-dark"></div>
+
+        <div class="relative z-10 max-w-5xl mx-auto text-center space-y-8">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold-500/50 bg-regal-card/90 backdrop-blur-md text-gold-300 text-xs md:text-sm font-serif gold-glow">
+                <i class="fa-solid fa-gem text-gold-400"></i>
+                <span class="tracking-widest uppercase">$20 Million USD Buyout Offer Declined • Priceless Treasure</span>
+            </div>
+
+            <!-- Titles -->
+            <div class="space-y-3">
+                <h1 class="font-serif text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-gold-gradient drop-shadow-2xl">
+                    MARWAN AL SHAQAB
+                </h1>
+                <p class="font-arabic text-3xl sm:text-4xl text-gold-300/90 font-medium tracking-wide">
+                    مروان الشقب
+                </p>
+                <p class="text-xl sm:text-2xl font-serif text-gray-300 italic max-w-2xl mx-auto font-light">
+                    "The Living Legend & Quintessential World Sire of the Arabian Horse"
+                </p>
+            </div>
+
+            <!-- Quick Stats Chips -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto pt-4">
+                <div class="p-4 rounded-xl bg-regal-card/60 border border-gold-500/30 backdrop-blur-sm text-center">
+                    <span class="block text-xs uppercase tracking-widest text-gold-400/80 mb-1">Foal Year</span>
+                    <span class="font-serif text-2xl font-bold text-white">2000</span>
+                </div>
+                <div class="p-4 rounded-xl bg-regal-card/60 border border-gold-500/30 backdrop-blur-sm text-center">
+                    <span class="block text-xs uppercase tracking-widest text-gold-400/80 mb-1">Triple Crown</span>
+                    <span class="font-serif text-2xl font-bold text-white">2002 Champion</span>
+                </div>
+                <div class="p-4 rounded-xl bg-regal-card/60 border border-gold-500/30 backdrop-blur-sm text-center">
+                    <span class="block text-xs uppercase tracking-widest text-gold-400/80 mb-1">World Champion</span>
+                    <span class="font-serif text-2xl font-bold text-white">Multi-Gold</span>
+                </div>
+                <div class="p-4 rounded-xl bg-regal-card/60 border border-gold-500/30 backdrop-blur-sm text-center">
+                    <span class="block text-xs uppercase tracking-widest text-gold-400/80 mb-1">Impact</span>
+                    <span class="font-serif text-2xl font-bold text-gold-400">Leading Sire</span>
+                </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+                <a href="#pedigree" class="px-8 py-3.5 rounded-lg bg-gold-500 text-black font-semibold uppercase tracking-wider text-sm hover:bg-gold-400 transition shadow-lg hover:shadow-gold-500/40 flex items-center gap-2">
+                    <i class="fa-solid fa-sitemap"></i> Explore Pedigree
+                </a>
+                <a href="#trophies" class="px-8 py-3.5 rounded-lg bg-regal-card/80 text-gold-300 border border-gold-500/50 font-semibold uppercase tracking-wider text-sm hover:bg-gold-500/10 transition flex items-center gap-2">
+                    <i class="fa-solid fa-trophy"></i> Championship Records
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION 1: PEDIGREE & GENETIC LINEAGE -->
+    <section id="pedigree" class="py-20 px-4 md:px-8 max-w-7xl mx-auto border-b border-gold-500/20">
+        <div class="text-center space-y-3 mb-16">
+            <span class="text-gold-400 text-xs font-serif uppercase tracking-widest">Flawless Genetic Blend</span>
+            <h2 class="font-serif text-3xl md:text-5xl font-bold text-gold-gradient">Interactive Pedigree Lineage</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
+                Marwan Al Shaqab represents the pinnacle of Arabian breeding—harmoniously blending iconic Egyptian, Polish, and Domestic American champion bloodlines.
+            </p>
+        </div>
+
+        <!-- Genetic Breakdown Tags/Bars -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="p-6 rounded-xl bg-regal-card border border-gold-500/20 hover:border-gold-500/50 transition">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="font-serif font-bold text-lg text-gold-300">Egyptian Lineage</span>
+                    <i class="fa-solid fa-ankh text-gold-500"></i>
+                </div>
+                <p class="text-xs text-gray-400 mb-4">Renowned for refined head carriage, high tail carriage, and extreme type through Anaza El Farid.</p>
+                <div class="w-full bg-gray-800 rounded-full h-2">
+                    <div class="bg-gold-500 h-2 rounded-full" style="width: 40%"></div>
+                </div>
+            </div>
+
+            <div class="p-6 rounded-xl bg-regal-card border border-gold-500/20 hover:border-gold-500/50 transition">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="font-serif font-bold text-lg text-gold-300">Polish Influence</span>
+                    <i class="fa-solid fa-shield-halved text-gold-500"></i>
+                </div>
+                <p class="text-xs text-gray-400 mb-4">Imparting powerful body mechanics, structural soundness, athleticism, and powerful movement.</p>
+                <div class="w-full bg-gray-800 rounded-full h-2">
+                    <div class="bg-gold-500 h-2 rounded-full" style="width: 30%"></div>
+                </div>
+            </div>
+
+            <div class="p-6 rounded-xl bg-regal-card border border-gold-500/20 hover:border-gold-500/50 transition">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="font-serif font-bold text-lg text-gold-300">American Domestic</span>
+                    <i class="fa-solid fa-star text-gold-500"></i>
+                </div>
+                <p class="text-xs text-gray-400 mb-4">Adding length of neck, show ring presence, and charismatic flair via Fame VF.</p>
+                <div class="w-full bg-gray-800 rounded-full h-2">
+                    <div class="bg-gold-500 h-2 rounded-full" style="width: 30%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pedigree Visual Tree -->
+        <div class="bg-regal-card/90 rounded-2xl p-6 md:p-10 border border-gold-500/30 gold-glow relative">
+            <h3 class="font-serif text-xl font-bold text-center text-gold-300 mb-8 uppercase tracking-wider">
+                <i class="fa-solid fa-diagram-project mr-2"></i> Three-Generation Ancestry Tree
+            </h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center relative">
+                
+                <!-- Grandparents (Sire Side) & SIRE -->
+                <div class="space-y-4">
+                    <div class="p-3 bg-regal-dark/80 rounded-lg border border-gold-500/20 text-center">
+                        <span class="text-[10px] text-gray-400 uppercase tracking-widest block">Paternal Grandsire</span>
+                        <span class="font-serif font-semibold text-gold-300">Anaza El Farid</span>
+                        <span class="text-xs text-gray-400 block font-arabic">Straight Egyptian Sire</span>
+                    </div>
+
+                    <!-- Connect Line -->
+                    <div class="text-center text-gold-500/50 text-xs"><i class="fa-solid fa-arrow-down"></i></div>
+
+                    <!-- SIRE CARD -->
+                    <div class="p-5 bg-gradient-to-br from-gold-900/40 to-regal-dark rounded-xl border border-gold-500/60 text-center shadow-lg hover:scale-105 transition cursor-pointer" onclick="openPedigreeModal('gazal')">
+                        <span class="px-2 py-0.5 rounded bg-gold-500/20 text-gold-300 text-[10px] uppercase font-bold tracking-wider inline-block mb-1">SIRE (FATHER)</span>
+                        <h4 class="font-serif text-xl font-bold text-gold-gradient">GAZAL AL SHAQAB</h4>
+                        <p class="text-xs text-gray-300 mt-1">World Champion Stallion & Iconic Breed Patriarch</p>
+                        <span class="mt-2 text-[11px] text-gold-400 flex items-center justify-center gap-1"><i class="fa-solid fa-circle-info"></i> View Details</span>
+                    </div>
+
+                    <!-- Connect Line -->
+                    <div class="text-center text-gold-500/50 text-xs"><i class="fa-solid fa-arrow-down"></i></div>
+
+                    <div class="p-3 bg-regal-dark/80 rounded-lg border border-gold-500/20 text-center">
+                        <span class="text-[10px] text-gray-400 uppercase tracking-widest block">Paternal Granddam</span>
+                        <span class="font-serif font-semibold text-gold-300">Kajora</span>
+                        <span class="text-xs text-gray-400 block font-arabic">Champion Polish Mare</span>
+                    </div>
+                </div>
+
+                <!-- SUBJECT: MARWAN AL SHAQAB -->
+                <div class="my-6 lg:my-0">
+                    <div class="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-gold-500/20 via-regal-dark to-gold-900/40 border-2 border-gold-500 text-center relative gold-glow-lg transform hover:scale-105 transition">
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gold-500 text-black text-xs font-bold uppercase tracking-widest rounded-full">
+                            PROGENITOR
+                        </div>
+                        <i class="fa-solid fa-crown text-3xl text-gold-400 mb-2"></i>
+                        <h3 class="font-serif text-2xl md:text-3xl font-extrabold text-gold-gradient">MARWAN AL SHAQAB</h3>
+                        <p class="font-arabic text-lg text-gold-300">مروان الشقب</p>
+                        <p class="text-xs text-gray-300 mt-2 italic">Bay Stallion • Foaled 2000 • Qatar</p>
+                        <div class="mt-4 pt-4 border-t border-gold-500/30 text-xs text-gray-300 space-y-1">
+                            <div><strong class="text-gold-400">Breeder:</strong> Al Shaqab Stud (Qatar)</div>
+                            <div><strong class="text-gold-400">Status:</strong> Priceless World Treasure</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DAM Side & Grandparents -->
+                <div class="space-y-4">
+                    <div class="p-3 bg-regal-dark/80 rounded-lg border border-gold-500/20 text-center">
+                        <span class="text-[10px] text-gray-400 uppercase tracking-widest block">Maternal Grandsire</span>
+                        <span class="font-serif font-semibold text-gold-300">Fame VF</span>
+                        <span class="text-xs text-gray-400 block font-arabic">US National Champion</span>
+                    </div>
+
+                    <!-- Connect Line -->
+                    <div class="text-center text-gold-500/50 text-xs"><i class="fa-solid fa-arrow-down"></i></div>
+
+                    <!-- DAM CARD -->
+                    <div class="p-5 bg-gradient-to-br from-gold-900/40 to-regal-dark rounded-xl border border-gold-500/60 text-center shadow-lg hover:scale-105 transition cursor-pointer" onclick="openPedigreeModal('liza')">
+                        <span class="px-2 py-0.5 rounded bg-gold-500/20 text-gold-300 text-[10px] uppercase font-bold tracking-wider inline-block mb-1">DAM (MOTHER)</span>
+                        <h4 class="font-serif text-xl font-bold text-gold-gradient">LITTLE LIZA FAME</h4>
+                        <p class="text-xs text-gray-300 mt-1">Champion American Mare of Supreme Quality</p>
+                        <span class="mt-2 text-[11px] text-gold-400 flex items-center justify-center gap-1"><i class="fa-solid fa-circle-info"></i> View Details</span>
+                    </div>
+
+                    <!-- Connect Line -->
+                    <div class="text-center text-gold-500/50 text-xs"><i class="fa-solid fa-arrow-down"></i></div>
+
+                    <div class="p-3 bg-regal-dark/80 rounded-lg border border-gold-500/20 text-center">
+                        <span class="text-[10px] text-gray-400 uppercase tracking-widest block">Maternal Granddam</span>
+                        <span class="font-serif font-semibold text-gold-300">Katahabah</span>
+                        <span class="text-xs text-gray-400 block font-arabic">Elite Foundation Dam</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: SHOW RECORDS TIMELINE & TROPHY CASE -->
+    <section id="trophies" class="py-20 px-4 md:px-8 max-w-7xl mx-auto border-b border-gold-500/20">
+        <div class="text-center space-y-3 mb-12">
+            <span class="text-gold-400 text-xs font-serif uppercase tracking-widest">Unprecedented Competition Streak</span>
+            <h2 class="font-serif text-3xl md:text-5xl font-bold text-gold-gradient">Show Records & Trophy Case</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
+                Dominated every major championship stage across Colt, Junior, and Senior Stallion divisions worldwide.
+            </p>
+
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 pt-6">
+                <button class="filter-btn active px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider border border-gold-500 bg-gold-500 text-black transition" onclick="filterTrophies('all', this)">All Titles</button>
+                <button class="filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider border border-gold-500/40 text-gold-300 hover:border-gold-500 transition" onclick="filterTrophies('colt', this)">Colt Era (2001-2002)</button>
+                <button class="filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider border border-gold-500/40 text-gold-300 hover:border-gold-500 transition" onclick="filterTrophies('junior', this)">Junior Stallion (2003-2005)</button>
+                <button class="filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider border border-gold-500/40 text-gold-300 hover:border-gold-500 transition" onclick="filterTrophies('senior', this)">Senior Champion (2008-2009)</button>
+            </div>
+        </div>
+
+        <!-- Trophy Grid -->
+        <div id="trophyGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- 2001 Colt Paris -->
+            <div class="trophy-card colt p-6 rounded-xl bg-regal-card border border-gold-500/30 hover:border-gold-500 transition relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-gold-500/10 rounded-bl-full flex items-top justify-end p-3">
+                    <i class="fa-solid fa-trophy text-gold-400 text-2xl group-hover:scale-110 transition"></i>
+                </div>
+                <span class="px-2.5 py-1 rounded bg-gold-500/20 text-gold-300 text-xs font-bold">2001</span>
+                <h3 class="font-serif text-xl font-bold text-white mt-3">World Champion Colt</h3>
+                <p class="text-xs text-gold-400 mt-1"><i class="fa-solid fa-location-dot mr-1"></i> Paris, France</p>
+                <p class="text-xs text-gray-300 mt-3">Announced his global arrival by taking the ultimate title in Paris as a yearling colt.</p>
+            </div>
+
+            <!-- 2001 Qatar Colt -->
+            <div class="trophy-card colt p-6 rounded-xl bg-regal-card border border-gold-500/30 hover:border-gold-500 transition relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-gold-500/10 rounded-bl-full flex items-top justify-end p-3">
+                    <i class="fa-solid fa-award text-gold-400 text-2xl group-hover:scale-110 transition"></i>
+                </div>
+                <span class="px-2.5 py-1 rounded bg-gold-500/20 text-gold-300 text-xs font-bold">2001</span>
+                <h3 class="font-serif text-xl font-bold text-white mt-3">Qatar International Champion Colt</h3>
+                <p class="text-xs text-gold-400 mt-1"><i class="fa-solid fa-location-dot mr-1"></i> Doha, Qatar</p>
+                <p class="text-xs text-gray-300 mt-3">Dominant home victory establishing supremacy in Middle Eastern show grounds.</p>
+            </div>
+
+            <!-- 2002 Triple Crown -->
+            <div class="trophy-card colt p-6 rounded-xl bg-gradient-to-br from-gold-900/50 to-regal-card border-2 border-gold-500 hover:border-gold-300 transition relative overflow-hidden group gold-glow">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-gold-500/20 rounded-bl-full flex items-top justify-end p-3">
+                    <i class="fa-solid fa-crown text-gold-400 text-3xl group-hover:scale-125 transition"></i>
+                </div>
+                <span class="px-2.5 py-1 rounded bg-gold-500 text-black font-extrabold text-xs">2002 • HISTORIC</span>
+                <h3 class="font-serif text-xl font-bold text-gold-gradient mt-3">European "Triple Crown" Winner</h3>
+                <p class="text-xs text-gold-300 mt-1"><i class="fa-solid fa-globe mr-1"></i> Aachen, European & World Championships</p>
+                <p class="text-xs text-gray-200 mt-3">Achieved the coveted unofficial European Triple Crown by winning All Nations Cup (Aachen), European Championship & World Championship.</p>
+            </div>
+
+            <!-- 2003 US National -->
+            <div class="trophy-card junior p-6 rounded-xl bg-regal-card border border-gold-500/30 hover:border-gold-500 transition relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-gold-500/10 rounded-bl-full flex items-top justify-end p-3">
+                    <i class="fa-solid fa-star text-gold-400 text-2xl group-hover:scale-110 transition"></i>
+                </div>
+                <span class="px-2.5 py-1 rounded bg-gold-500/20 text-gold-300 text-xs font-bold">2003</span>
+                <h3 class="font-serif text-xl font-bold text-white mt-3">Unanimous US National Champion</h3>
+                <p class="text-xs text-gold-400 mt-1"><i class="fa-solid fa-location-dot mr-1"></i> United States</p>
+                <p class="text-xs text-gray-300 mt-3">Unanimous first-place ranking from all judges in the Junior Stallion class.</p>
+            </div>
+
+            <!-- 2005 US National -->
+            <div class="trophy-card junior p-6 rounded-xl bg-regal-card border border-gold-500/30 hover:border-gold-500 transition relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-gold-500/10 rounded-bl-full flex items-top justify-end p-3">
+                    <i class="fa-solid fa-star text-gold-400 text-2xl group-hover:scale-110 transition"></i>
+                </div>
+                <span class="px-2.5 py-1 rounded bg-gold-500/20 text-gold-300 text-xs font-bold">2005</span>
+                <h3 class="font-serif text-xl font-bold text-white mt-3">Repeat US National Champion</h3>
+                <p class="text-xs text-gold-400 mt-1"><i class="fa-solid fa-location-dot mr-1"></i> United States</p>
+                <p class="text-xs text-gray-300 mt-3">Returned to the US ring to claim unanimous Junior Stallion Gold once again.</p>
+            </div>
+
+            <!-- 2008 World Champion Senior -->
+            <div class="trophy-card senior p-6 rounded-xl bg-regal-card border border-gold-500/30 hover:border-gold-500 transition relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-gold-500/10 rounded-bl-full flex items-top justify-end p-3">
+                    <i class="fa-solid fa-trophy text-gold-400 text-2xl group-hover:scale-110 transition"></i>
+                </div>
+                <span class="px-2.5 py-1 rounded bg-gold-500/20 text-gold-300 text-xs font-bold">2008</span>
+                <h3 class="font-serif text-xl font-bold text-white mt-3">World Senior Champion Stallion</h3>
+                <p class="text-xs text-gold-400 mt-1"><i class="fa-solid fa-location-dot mr-1"></i> Paris, France</p>
+                <p class="text-xs text-gray-300 mt-3">Reached the pinnacle of senior competition, taking Gold in Salon du Cheval, Paris.</p>
+            </div>
+
+            <!-- 2008 All Nations Cup -->
+            <div class="trophy-card senior p-6 rounded-xl bg-regal-card border border-gold-500/30 hover:border-gold-500 transition relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-gold-500/10 rounded-bl-full flex items-top justify-end p-3">
+                    <i class="fa-solid fa-award text-gold-400 text-2xl group-hover:scale-110 transition"></i>
+                </div>
+                <span class="px-2.5 py-1 rounded bg-gold-500/20 text-gold-300 text-xs font-bold">2008</span>
+                <h3 class="font-serif text-xl font-bold text-white mt-3">AAC Senior Champion Stallion</h3>
+                <p class="text-xs text-gold-400 mt-1"><i class="fa-solid fa-location-dot mr-1"></i> Aachen, Germany</p>
+                <p class="text-xs text-gray-300 mt-3">All Nations Cup Senior Champion against the world's most elite breeding stock.</p>
+            </div>
+
+            <!-- 2009 Qatar National -->
+            <div class="trophy-card senior p-6 rounded-xl bg-regal-card border border-gold-500/30 hover:border-gold-500 transition relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-gold-500/10 rounded-bl-full flex items-top justify-end p-3">
+                    <i class="fa-solid fa-shield text-gold-400 text-2xl group-hover:scale-110 transition"></i>
+                </div>
+                <span class="px-2.5 py-1 rounded bg-gold-500/20 text-gold-300 text-xs font-bold">2009</span>
+                <h3 class="font-serif text-xl font-bold text-white mt-3">Qatar National Senior Champion</h3>
+                <p class="text-xs text-gold-400 mt-1"><i class="fa-solid fa-location-dot mr-1"></i> Qatar</p>
+                <p class="text-xs text-gray-300 mt-3">Celebrated crowning achievement at home before stepping into full-time sire duties.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 3: SIRE LEGACY & DYNASTY -->
+    <section id="dynasty" class="py-20 px-4 md:px-8 max-w-7xl mx-auto border-b border-gold-500/20">
+        <div class="text-center space-y-3 mb-16">
+            <span class="text-gold-400 text-xs font-serif uppercase tracking-widest">A Dominant Genetic Footprint</span>
+            <h2 class="font-serif text-3xl md:text-5xl font-bold text-gold-gradient">World Leading Sire Dynasty</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
+                Marwan Al Shaqab repeatedly earned the crown of "World Leading Sire" at the World Championships in Paris, US Nationals, and Qatar Internationals.
+            </p>
+        </div>
+
+        <!-- Royal Banner: $20,000,000 Offer Story -->
+        <div class="mb-16 p-8 md:p-12 rounded-2xl bg-gradient-to-r from-gold-900/60 via-regal-card to-gold-900/60 border border-gold-500/50 relative overflow-hidden gold-glow">
+            <div class="max-w-3xl mx-auto text-center space-y-4 relative z-10">
+                <i class="fa-solid fa-quote-left text-4xl text-gold-400 opacity-60"></i>
+                <h3 class="font-serif text-2xl md:text-3xl font-bold text-gold-100 italic">
+                    "Because of his unmatched genetic worth, Al Shaqab famously turned down an unprecedented $20,000,000 USD buyout offer—cementing Marwan Al Shaqab as an irreplaceable, priceless national treasure."
+                </h3>
+                <p class="text-xs font-serif uppercase tracking-widest text-gold-400">— State of Qatar & Al Shaqab Stud Legacy</p>
+            </div>
+        </div>
+
+        <!-- Dynasty Sons Showcase -->
+        <h3 class="font-serif text-2xl font-bold text-gold-300 mb-8 flex items-center gap-2">
+            <i class="fa-solid fa-crown text-gold-400"></i> Notable World Champion Sons
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <!-- Son 1: Kahil Al Shaqab -->
+            <div class="rounded-xl bg-regal-card border border-gold-500/30 overflow-hidden hover:border-gold-500 transition group flex flex-col justify-between">
+                <div>
+                    <div class="h-48 bg-gray-800 bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-regal-card to-transparent"></div>
+                        <span class="absolute bottom-2 left-3 px-2 py-0.5 rounded bg-gold-500 text-black text-[10px] font-bold">WORLD CHAMPION</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <h4 class="font-serif text-xl font-bold text-gold-gradient">Kahil Al Shaqab</h4>
+                        <p class="font-arabic text-sm text-gold-300">كحيل الشقب</p>
+                        <p class="text-xs text-gray-300">Out of OFW Mishaahl. Renowned for supreme neck set and classical Arabian type.</p>
+                    </div>
+                </div>
+                <div class="p-5 pt-0 border-t border-gold-500/10 mt-4">
+                    <span class="text-[11px] text-gold-400 font-semibold block">Key Title:</span>
+                    <span class="text-xs text-white">World Senior Champion Stallion</span>
+                </div>
+            </div>
+
+            <!-- Son 2: Wadi Al Shaqab -->
+            <div class="rounded-xl bg-regal-card border border-gold-500/30 overflow-hidden hover:border-gold-500 transition group flex flex-col justify-between">
+                <div>
+                    <div class="h-48 bg-gray-800 bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?auto=format&fit=crop&w=600&q=80');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-regal-card to-transparent"></div>
+                        <span class="absolute bottom-2 left-3 px-2 py-0.5 rounded bg-gold-500 text-black text-[10px] font-bold">WORLD CHAMPION</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <h4 class="font-serif text-xl font-bold text-gold-gradient">Wadi Al Shaqab</h4>
+                        <p class="font-arabic text-sm text-gold-300">وادي الشقب</p>
+                        <p class="text-xs text-gray-300">Out of OFW Mishaahl. Famous for majestic trotting gait and powerful charisma.</p>
+                    </div>
+                </div>
+                <div class="p-5 pt-0 border-t border-gold-500/10 mt-4">
+                    <span class="text-[11px] text-gold-400 font-semibold block">Key Title:</span>
+                    <span class="text-xs text-white">World Senior Champion Stallion</span>
+                </div>
+            </div>
+
+            <!-- Son 3: Hariry Al Shaqab -->
+            <div class="rounded-xl bg-regal-card border border-gold-500/30 overflow-hidden hover:border-gold-500 transition group flex flex-col justify-between">
+                <div>
+                    <div class="h-48 bg-gray-800 bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1598974357801-cbca100e65d3?auto=format&fit=crop&w=600&q=80');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-regal-card to-transparent"></div>
+                        <span class="absolute bottom-2 left-3 px-2 py-0.5 rounded bg-gold-500 text-black text-[10px] font-bold">WORLD CHAMPION</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <h4 class="font-serif text-xl font-bold text-gold-gradient">Hariry Al Shaqab</h4>
+                        <p class="font-arabic text-sm text-gold-300">حريري الشقب</p>
+                        <p class="text-xs text-gray-300">Out of White Silkk. Undefeated multi-national gold champion across continents.</p>
+                    </div>
+                </div>
+                <div class="p-5 pt-0 border-t border-gold-500/10 mt-4">
+                    <span class="text-[11px] text-gold-400 font-semibold block">Key Title:</span>
+                    <span class="text-xs text-white">World Senior Champion Stallion</span>
+                </div>
+            </div>
+
+            <!-- Son 4: QR Marc -->
+            <div class="rounded-xl bg-regal-card border border-gold-500/30 overflow-hidden hover:border-gold-500 transition group flex flex-col justify-between">
+                <div>
+                    <div class="h-48 bg-gray-800 bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-regal-card to-transparent"></div>
+                        <span class="absolute bottom-2 left-3 px-2 py-0.5 rounded bg-gold-500/30 text-gold-300 text-[10px] font-bold">GLOBAL SIRE</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <h4 class="font-serif text-xl font-bold text-gold-gradient">QR Marc</h4>
+                        <p class="font-arabic text-sm text-gold-300">كيو آر مارك</p>
+                        <p class="text-xs text-gray-300">Out of Swete Dreams. Highly influential global sire carrying Marwan's legacy across Europe.</p>
+                    </div>
+                </div>
+                <div class="p-5 pt-0 border-t border-gold-500/10 mt-4">
+                    <span class="text-[11px] text-gold-400 font-semibold block">Key Impact:</span>
+                    <span class="text-xs text-white">World Reserve Champion & Leading Sire</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 4: INTERACTIVE PROGENY COMPARISON TOOL -->
+    <section id="comparison" class="py-20 px-4 md:px-8 max-w-7xl mx-auto border-b border-gold-500/20">
+        <div class="text-center space-y-3 mb-12">
+            <span class="text-gold-400 text-xs font-serif uppercase tracking-widest">Interactive Lineage Analyzer</span>
+            <h2 class="font-serif text-3xl md:text-5xl font-bold text-gold-gradient">Compare Marwan With His Progeny</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto text-sm">
+                Select a descendant to evaluate physical traits, championship records, and genetic dam lines against Marwan Al Shaqab.
+            </p>
+        </div>
+
+        <div class="bg-regal-card rounded-2xl p-6 md:p-8 border border-gold-500/30">
+            <!-- Progeny Selector Dropdown -->
+            <div class="max-w-md mx-auto mb-8">
+                <label class="block text-xs uppercase tracking-widest text-gold-400 mb-2 text-center">Select Progeny to Compare:</label>
+                <select id="progenySelect" class="w-full bg-regal-dark border border-gold-500/50 rounded-lg py-3 px-4 text-gold-300 font-serif focus:outline-none focus:border-gold-400 text-sm">
+                    <option value="kahil">Kahil Al Shaqab (كحيل الشقب)</option>
+                    <option value="wadi">Wadi Al Shaqab (وادي الشقب)</option>
+                    <option value="hariry">Hariry Al Shaqab (حريري الشقب)</option>
+                    <option value="qrmarc">QR Marc (كيو آر مارك)</option>
+                </select>
+            </div>
+
+            <!-- Comparison Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                <!-- Side A: Marwan -->
+                <div class="p-6 rounded-xl bg-regal-dark/80 border border-gold-500/40 space-y-4">
+                    <div class="flex items-center justify-between border-b border-gold-500/20 pb-3">
+                        <div>
+                            <span class="text-[10px] text-gold-400 uppercase font-bold tracking-widest">PROGENITOR</span>
+                            <h3 class="font-serif text-2xl font-bold text-gold-gradient">Marwan Al Shaqab</h3>
+                        </div>
+                        <span class="text-xs px-2.5 py-1 bg-gold-500/20 text-gold-300 rounded-full font-bold">2000 Bay</span>
+                    </div>
+
+                    <div class="space-y-3 text-sm">
+                        <div class="flex justify-between py-1 border-b border-gray-800">
+                            <span class="text-gray-400">Head & Type Score:</span>
+                            <span class="text-gold-300 font-bold">20.0 (Unanimous 20s)</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-gray-800">
+                            <span class="text-gray-400">Sire Line:</span>
+                            <span class="text-white">Gazal Al Shaqab</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-gray-800">
+                            <span class="text-gray-400">Dam Line:</span>
+                            <span class="text-white">Little Liza Fame</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-gray-800">
+                            <span class="text-gray-400">World Senior Gold:</span>
+                            <span class="text-gold-400 font-bold">2008 Paris</span>
+                        </div>
+                        <div class="flex justify-between py-1">
+                            <span class="text-gray-400">Key Feature:</span>
+                            <span class="text-white">Incredible neck arch, dish & eye</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Side B: Selected Son Dynamic -->
+                <div id="progenyDisplay" class="p-6 rounded-xl bg-regal-dark/80 border border-gold-500/40 space-y-4">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: GALLERY VAULT & CULTURAL ATTIRE -->
+    <section id="gallery" class="py-20 px-4 md:px-8 max-w-7xl mx-auto border-b border-gold-500/20">
+        <div class="text-center space-y-3 mb-12">
+            <span class="text-gold-400 text-xs font-serif uppercase tracking-widest">Photographic & Cultural Heritage</span>
+            <h2 class="font-serif text-3xl md:text-5xl font-bold text-gold-gradient">Interactive Gallery Vault</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto text-sm">
+                Exquisite official portraiture showcasing his majestic conformation, heritage show attire (الزي التراثي الاستعراضي الفاخر), and global arena appearances.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Gallery Item 1 -->
+            <div class="relative group rounded-xl overflow-hidden border border-gold-500/30 cursor-pointer h-72" onclick="openGalleryModal('https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=1200&q=80', 'Regal Stance & Conformation', 'Showcasing the extreme neck arch, refined jowl, and noble carriage.')">
+                <img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=800&q=80" alt="Marwan Stance" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-regal-dark via-transparent to-transparent opacity-80"></div>
+                <div class="absolute bottom-4 left-4 right-4">
+                    <span class="text-[10px] text-gold-400 uppercase tracking-wider font-bold block">PORTRAIT</span>
+                    <h4 class="font-serif text-lg font-bold text-white">Regal Stance & Conformation</h4>
+                </div>
+            </div>
+
+            <!-- Gallery Item 2 -->
+            <div class="relative group rounded-xl overflow-hidden border border-gold-500/30 cursor-pointer h-72" onclick="openGalleryModal('https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1200&q=80', 'Traditional Heritage Attire (الزي التراثي)', 'Adorned in royal Qatari embroidered harness and traditional tassels.')">
+                <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80" alt="Heritage Attire" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-regal-dark via-transparent to-transparent opacity-80"></div>
+                <div class="absolute bottom-4 left-4 right-4">
+                    <span class="text-[10px] text-gold-400 uppercase tracking-wider font-bold block">HERITAGE</span>
+                    <h4 class="font-serif text-lg font-bold text-white">Traditional Exhibition Attire</h4>
+                </div>
+            </div>
+
+            <!-- Gallery Item 3 -->
+            <div class="relative group rounded-xl overflow-hidden border border-gold-500/30 cursor-pointer h-72" onclick="openGalleryModal('https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?auto=format&fit=crop&w=1200&q=80', 'World Championship Arena Paris', 'Dominating the ring with floating trot and intense presence.')">
+                <img src="https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?auto=format&fit=crop&w=800&q=80" alt="World Championship" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-regal-dark via-transparent to-transparent opacity-80"></div>
+                <div class="absolute bottom-4 left-4 right-4">
+                    <span class="text-[10px] text-gold-400 uppercase tracking-wider font-bold block">CHAMPIONSHIP</span>
+                    <h4 class="font-serif text-lg font-bold text-white">World Championship Arena</h4>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 px-4 text-center border-t border-gold-500/20 bg-regal-dark text-gray-400 text-xs">
+        <div class="max-w-4xl mx-auto space-y-4">
+            <div class="flex items-center justify-center gap-2">
+                <i class="fa-solid fa-horse-head text-gold-400 text-xl"></i>
+                <span class="font-serif text-lg text-gold-300 font-bold tracking-wider">MARWAN AL SHAQAB ARCHIVE</span>
+            </div>
+            <p class="max-w-xl mx-auto text-gray-500">
+                Dedicated to research, preservation, and celebration of the iconic stallion Marwan Al Shaqab and the global Arabian horse heritage.
+            </p>
+            <p class="text-gold-500/60 font-serif">Al Shaqab Stud • Qatar Foundation • Historical Reference Document</p>
+        </div>
+    </footer>
+
+    <!-- MODAL 1: PEDIGREE DETAIL MODAL -->
+    <div id="pedigreeModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-regal-card border border-gold-500 rounded-2xl max-w-lg w-full p-6 relative text-gray-200">
+            <button onclick="closePedigreeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="pedigreeModalContent" class="space-y-4">
+                <!-- Dynamic Content Insertion -->
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: GALLERY LIGHTBOX MODAL -->
+    <div id="galleryModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="max-w-4xl w-full space-y-4 relative">
+            <button onclick="closeGalleryModal()" class="absolute -top-10 right-0 text-gold-400 hover:text-white text-2xl">
+                <i class="fa-solid fa-xmark"></i> Close
+            </button>
+            <img id="modalImage" src="" alt="Gallery Preview" class="w-full max-h-[75vh] object-contain rounded-xl border border-gold-500/40">
+            <div class="bg-regal-card p-4 rounded-xl border border-gold-500/30">
+                <h3 id="modalTitle" class="font-serif text-xl font-bold text-gold-gradient"></h3>
+                <p id="modalDesc" class="text-xs text-gray-300 mt-1"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT INTERACTIVE LOGIC -->
+    <script>
+        // Language Toggle Snippets Logic
+        let currentLang = 'EN';
+        document.getElementById('langToggle').addEventListener('click', () => {
+            currentLang = currentLang === 'EN' ? 'AR' : 'EN';
+            document.getElementById('langLabel').innerText = currentLang === 'EN' ? 'EN / عربي' : 'عربي / EN';
+            
+            // Toggle Arabic subheadings visibility/emphasis
+            const arabicTexts = document.querySelectorAll('.font-arabic');
+            arabicTexts.forEach(el => {
+                if (currentLang === 'AR') {
+                    el.classList.add('text-gold-400', 'scale-105');
+                } else {
+                    el.classList.remove('text-gold-400', 'scale-105');
+                }
+            });
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Trophy Filter Logic
+        function filterTrophies(category, btnElement) {
+            const cards = document.querySelectorAll('.trophy-card');
+            const btns = document.querySelectorAll('.filter-btn');
+
+            btns.forEach(b => {
+                b.classList.remove('bg-gold-500', 'text-black');
+                b.classList.add('text-gold-300');
+            });
+            btnElement.classList.add('bg-gold-500', 'text-black');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Progeny Comparison Data
+        const progenyData = {
+            kahil: {
+                name: "Kahil Al Shaqab",
+                arabic: "كحيل الشقب",
+                year: "2008 Bay Stallion",
+                headScore: "19.8 (Extreme Refinement)",
+                sire: "Marwan Al Shaqab",
+                dam: "OFW Mishaahl",
+                title: "World Senior Champion Stallion",
+                feature: "Classical dish, powerful shoulder & trot"
+            },
+            wadi: {
+                name: "Wadi Al Shaqab",
+                arabic: "وادي الشقب",
+                year: "2010 Bay Stallion",
+                headScore: "19.7 (Majestic Expression)",
+                sire: "Marwan Al Shaqab",
+                dam: "OFW Mishaahl",
+                title: "World Senior Champion Stallion",
+                feature: "Exceptional movement & high tail carriage"
+            },
+            hariry: {
+                name: "Hariry Al Shaqab",
+                arabic: "حريري الشقب",
+                year: "2010 Bay Stallion",
+                headScore: "20.0 (Unanimous Gold)",
+                sire: "Marwan Al Shaqab",
+                dam: "White Silkk",
+                title: "World Senior Champion & US Champion",
+                feature: "Undefeated champion streak across continents"
+            },
+            qrmarc: {
+                name: "QR Marc",
+                arabic: "كيو آر مارك",
+                year: "2005 Bay Stallion",
+                headScore: "19.9 (Prolific Type)",
+                sire: "Marwan Al Shaqab",
+                dam: "Swete Dreams",
+                title: "World Reserve Champion & Sire of Champions",
+                feature: "Top European sire producing world champions"
+            }
+        };
+
+        function updateProgenyDisplay(key) {
+            const data = progenyData[key];
+            const display = document.getElementById('progenyDisplay');
+            display.innerHTML = `
+                <div class="flex items-center justify-between border-b border-gold-500/20 pb-3">
+                    <div>
+                        <span class="text-[10px] text-gold-400 uppercase font-bold tracking-widest">SELECTED DESCENDANT</span>
+                        <h3 class="font-serif text-2xl font-bold text-gold-gradient">${data.name}</h3>
+                        <span class="font-arabic text-xs text-gold-300">${data.arabic}</span>
+                    </div>
+                    <span class="text-xs px-2.5 py-1 bg-gold-500/20 text-gold-300 rounded-full font-bold">${data.year}</span>
+                </div>
+
+                <div class="space-y-3 text-sm">
+                    <div class="flex justify-between py-1 border-b border-gray-800">
+                        <span class="text-gray-400">Head & Type Rating:</span>
+                        <span class="text-gold-300 font-bold">${data.headScore}</span>
+                    </div>
+                    <div class="flex justify-between py-1 border-b border-gray-800">
+                        <span class="text-gray-400">Sire Line:</span>
+                        <span class="text-gold-400 font-bold">${data.sire}</span>
+                    </div>
+                    <div class="flex justify-between py-1 border-b border-gray-800">
+                        <span class="text-gray-400">Dam Line:</span>
+                        <span class="text-white">${data.dam}</span>
+                    </div>
+                    <div class="flex justify-between py-1 border-b border-gray-800">
+                        <span class="text-gray-400">Key Championship:</span>
+                        <span class="text-gold-400 font-bold">${data.title}</span>
+                    </div>
+                    <div class="flex justify-between py-1">
+                        <span class="text-gray-400">Distinguishing Trait:</span>
+                        <span class="text-white">${data.feature}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        document.getElementById('progenySelect').addEventListener('change', (e) => {
+            updateProgenyDisplay(e.target.value);
+        });
+
+        // Initialize default comparison
+        updateProgenyDisplay('kahil');
+
+        // Pedigree Modal Data
+        const ancestorInfo = {
+            gazal: {
+                title: "GAZAL AL SHAQAB",
+                subtitle: "World Champion Stallion • Sire of Marwan",
+                text: "Gazal Al Shaqab (by Anaza El Farid out of Kajora) is considered one of the most influential stallions in modern Arabian horse history. He revolutionized global Arabian show standards through his progeny."
+            },
+            liza: {
+                title: "LITTLE LIZA FAME",
+                subtitle: "Champion American Mare • Dam of Marwan",
+                text: "Little Liza Fame (by Fame VF out of Katahabah) brought supreme refinement, long elegant neck structure, and athletic charisma from the top American halter and performance lines."
+            }
+        };
+
+        function openPedigreeModal(ancestorKey) {
+            const data = ancestorInfo[ancestorKey];
+            document.getElementById('pedigreeModalContent').innerHTML = `
+                <div class="text-center space-y-2">
+                    <i class="fa-solid fa-dna text-3xl text-gold-400"></i>
+                    <h3 class="font-serif text-2xl font-bold text-gold-gradient">${data.title}</h3>
+                    <p class="text-xs text-gold-300 font-serif">${data.subtitle}</p>
+                </div>
+                <p class="text-sm text-gray-300 leading-relaxed pt-2 border-t border-gold-500/20">${data.text}</p>
+            `;
+            document.getElementById('pedigreeModal').classList.remove('hidden');
+        }
+
+        function closePedigreeModal() {
+            document.getElementById('pedigreeModal').classList.add('hidden');
+        }
+
+        // Gallery Modal
+        function openGalleryModal(imgUrl, title, desc) {
+            document.getElementById('modalImage').src = imgUrl;
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('galleryModal').classList.remove('hidden');
+        }
+
+        function closeGalleryModal() {
+            document.getElementById('galleryModal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
